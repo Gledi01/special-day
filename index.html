@@ -106,7 +106,7 @@
       const audio = document.getElementById("music");
       audio.volume = 1.0;
       audio.play().catch(() => {
-        console.log("🥰🥰");
+        console.log("Browser memblokir musik, coba klik tombol lagi.");
       });
 
       const messages = [
@@ -123,32 +123,19 @@
         alert(msg);
       }
 
-      // Confirm chat creator
-      const ask = confirm("Mau chat creator dan bilang terimakasih?");
-      if (ask) {
-        const permission = confirm(
-          "Izinkan halaman untuk membuka WhatsApp dalam tab baru?"
-        );
-        if (permission) {
-          const url = "https://wa.me/6281241462583?text=Terimakasih%20ya%20untuk%20pesan%20ulang%20tahunnya";
-          window.open(url, "_blank");
-        }
-      }
-
-      // Ubah tampilan → hilangkan tombol, tampilkan card
+      // Hilangkan tombol
       btn.style.display = "none";
+
+      // Render card langsung
       renderCard(messages);
     }
 
     function renderCard(messages) {
-      // Hapus h1 atau ganti teks
       document.querySelector("h1").textContent = "🎉 Selamat Ulang Tahun! 🎉";
 
-      // Buat card
       const card = document.createElement("div");
       card.classList.add("card");
 
-      // Tambahkan semua pesan
       messages.forEach(msg => {
         const p = document.createElement("div");
         p.classList.add("message");
@@ -156,7 +143,7 @@
         card.appendChild(p);
       });
 
-      // Tombol WA di card
+      // Tombol WA langsung di card
       const waLink = document.createElement("a");
       waLink.href = "https://wa.me/6281241462583?text=Terimakasih%20ya%20untuk%20pesan%20ulang%20tahunnya";
       waLink.target = "_blank";
@@ -166,10 +153,9 @@
 
       document.body.appendChild(card);
 
-      // Animasi muncul
       setTimeout(() => card.classList.add("show"), 100);
     }
   </script>
 
 </body>
-  </html>
+</html>
