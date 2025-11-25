@@ -52,15 +52,26 @@
 
   <button class="btn" onclick="start()">Klik untuk mulai</button>
 
+  <!-- AUDIO ONLINE -->
+<audio id="music" src="happy-birthday-334876.mp3"></audio>
   <script>
     function start() {
+
+      // Prompt nama dulu
       const name = prompt("Masukin Nama Kamu?") || "Teman";
+
+      // Musik diputar SETELAH tekan OK pada prompt
+      const audio = document.getElementById("music");
+      audio.volume = 1.0;
+      audio.play().catch(() => {
+        alert("🥰🥰");
+      });
 
       const messages = [
         `🎉 Hai ${name}!`,
         `Hari ini hari spesial banget ya buat kamu ${name}`,
         `🎂 Selamat ulang tahun ${name} dari aku!`,
-        `Tuhan Yesus memberkati semua yang ${name} lakukan`,
+        `🕊️Tuhan Yesus memberkati semua yang ${name} lakukan`,
         `🎁 Semoga ${name} panjang umur dan sehat selalu`,
         "🥳 Have a great birthday!"
       ];
@@ -76,7 +87,7 @@
       if (ask) {
         // Permission pop-up
         const permission = confirm(
-          `${name} mau buka whatsapp untuk ngucapin Terimakasih?`
+          "Izinkan halaman untuk membuka WhatsApp dalam tab baru?"
         );
 
         if (permission) {
